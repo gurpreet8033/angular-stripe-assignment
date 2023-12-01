@@ -1,0 +1,51 @@
+<div class="Cart-body">
+  <div class="Cart-Container">
+    <div class="Header">
+      <h3 class="Heading">Shopping Cart</h3>
+      <h5 class="Action">Remove all</h5>
+    </div>
+    <div *ngFor="let item of cart">
+      <div class="Cart-Items">
+        <div class="image-box">
+          <img src="{{ item.img }}" />
+        </div>
+        <div class="details-wrapper">
+          <div class="about">
+            <p class="title">{{ item.title }}</p>
+            <p class="subtitle">{{ item.sub }}</p>
+            <!-- <h3 class="subtitle">{{item. quantityType}}</h3> -->
+          </div>
+          <div class="counter">
+            <div style="display: flex; align-items: center">
+              <div>
+                <button
+                  class="quantity-btn"
+                  (click)="handleQuantityChange('-', item.id)"
+                >
+                  -
+                </button>
+              </div>
+              <div>{{ item.quantity }}</div>
+              <div>
+                <button
+                  class="quantity-btn"
+                  (click)="handleQuantityChange('+', item.id)"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <div class="prices">&#8377;{{ item.price * item.quantity }}.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="total-amount">
+      <span>Total amount</span>
+      <span >&#8377;{{total}}.00</span>
+    </div>
+    <div class="button-container">
+      <button class="checkout-button" (click)="pay(total)">Checkout</button>
+    </div>
+  </div>
+</div>

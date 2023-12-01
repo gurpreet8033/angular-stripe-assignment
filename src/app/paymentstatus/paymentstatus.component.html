@@ -1,0 +1,22 @@
+<div
+  style="
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <span class="status-detail">
+    @if(status==="success" || status==="") {
+    <span>
+      <h2 style="color: green">Payment Successful</h2>
+      <span> Transaction: {{id}}</span>
+    </span>
+    } @else{
+    <span>
+      <h2 style="color: crimson">Payment Failed</h2>
+      <span> Transaction: {{id}}</span>
+    </span>
+    }
+  </span>
+</div>

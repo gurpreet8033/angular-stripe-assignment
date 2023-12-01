@@ -1,0 +1,33 @@
+<p>checkout works!</p>
+
+<form class="checkout-form" [formGroup]="paymentForm">
+
+  <input type="text" formControlName="name" placeholder="Name"/>
+  <input type="text" formControlName="email" placeholder="Email">
+  <input type="number" formControlName="amount" placeholder="Amount"/>
+
+  <div class="stripe-card" ngxStripeCardGroup [elementsOptions]="elementsOptions">
+    <h4>Enter payment details</h4>
+
+    <div class="stripe-element">
+      <ngx-stripe-card-number
+        [options]="cardOptions"
+      ></ngx-stripe-card-number>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div class="w-full stripe-element">
+        <ngx-stripe-card-expiry
+          [options]="cardOptions"
+        ></ngx-stripe-card-expiry>
+      </div>
+      <div class="w-full stripe-element">
+        <ngx-stripe-card-cvc
+          [options]="cardOptions"
+        ></ngx-stripe-card-cvc>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" (click)="pay()">Submit Payment</button>
+</form>
